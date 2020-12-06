@@ -14,7 +14,7 @@
 
 ## Usage
 ```javascript
-import Dropdownmenu from 'react-native-dropdownmenus';
+import DropdownMenu from 'react-native-dropdownmenus';
 
 let conditionData = [["one", "tow", "three"], ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
                         ["Java", "PHP", "C#", "JS", "C++", "Python"]];
@@ -50,4 +50,3 @@ let conditionData = [["one", "tow", "three"], ["Monday", "Tuesday", "Wednesday",
 
 
 
-  
