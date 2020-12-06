@@ -23,6 +23,7 @@ let conditionData = [["one", "tow", "three"], ["Monday", "Tuesday", "Wednesday",
                 bgColor={'white'}
                 tintColor={'#666666'}
                 activityTintColor={'green'}
+                resetRight={true} // 联动，将右侧所有的下拉框的index重置为0
                 // arrowImg={}
                 // checkImage={}
                 // optionTextStyle={{color: '#333333'}}

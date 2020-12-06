@@ -56,10 +56,10 @@ class DropdownMenu extends Component {
 
     }
 
-    renderChcek(index, title) {
-        var activityIndex = this.state.activityIndex;
+    renderCheck(index, title) {
+        let activityIndex = this.state.activityIndex;
         if (this.state.selectIndex[activityIndex] === index) {
-            var checkImage = this.props.checkImage ? this.props.checkImage : this.defaultConfig.checkImage;
+            let checkImage = this.props.checkImage ? this.props.checkImage : this.defaultConfig.checkImage;
             return (
                 <View style={{flex: 1, justifyContent: 'space-between', alignItems: "center", paddingHorizontal: 15, flexDirection: 'row'}} >
                     <Text
@@ -91,9 +91,9 @@ class DropdownMenu extends Component {
     renderActivityPanel() {
         if (this.state.activityIndex >= 0) {
 
-            var currentTitles = this.props.data[this.state.activityIndex];
+            let currentTitles = this.props.data[this.state.activityIndex];
 
-            var heightStyle = {};
+            let heightStyle = {};
             if (this.props.maxHeight && this.props.maxHeight < currentTitles.length * 44) {
                 heightStyle.height = this.props.maxHeight;
             }
@@ -109,7 +109,7 @@ class DropdownMenu extends Component {
                         {
                             currentTitles.map((title, index) =>
                                 <TouchableOpacity key={index} activeOpacity={1} style={{flex: 1, height: 44}} onPress={this.itemOnPress.bind(this, index)} >
-                                    {this.renderChcek(index, title)}
+                                    {this.renderCheck(index, title)}
                                     <View style={{backgroundColor: '#F6F6F6', height: 1, marginLeft: 15}} />
                                 </TouchableOpacity>
                             )
@@ -126,7 +126,7 @@ class DropdownMenu extends Component {
 
         this.props.bannerAction ? this.props.bannerAction() : null;
 
-        // var toValue = 0.5;
+        // let toValue = 0.5;
         if (this.state.activityIndex == index) {
             this.closePanel(index);
             this.setState({
@@ -177,8 +177,14 @@ class DropdownMenu extends Component {
 
     itemOnPress(index) {
         if (this.state.activityIndex > -1) {
-            var selectIndex = this.state.selectIndex;
+            let selectIndex = this.state.selectIndex;
             selectIndex[this.state.activityIndex] = index;
+            if (this.props.resetRight === true && this.state.activityIndex<this.state.selectIndex.length-1) {
+                for (let i=this.state.activityIndex+1;i<this.state.selectIndex.length;i++){
+                    selectIndex[i] = 0;
+                }
+            }
+
             this.setState({
                 selectIndex: selectIndex
             });
@@ -190,7 +196,7 @@ class DropdownMenu extends Component {
     }
 
     renderDropDownArrow(index) {
-        var icon = this.props.arrowImg ? this.props.arrowImg : this.defaultConfig.arrowImg;
+        let icon = this.props.arrowImg ? this.props.arrowImg : this.defaultConfig.arrowImg;
         return (
             <Animated.Image
                 source={icon}
